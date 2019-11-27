@@ -1,28 +1,30 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import MyComponent from './MyComponent';
+import Message from './Message/Message';
+import { Button } from '@material-ui/core';
+import Icon from '@material-ui/core/Icon';
+import { Switch, Route } from 'react-router';
+import Greeting from './Greeting/Greeting';
+import MessageSent from './MessageSent/MessageSent';
+import Messages from './Messages/Messages';
 
-const App: React.FC = () => {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <MyComponent />
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component<any, any> {
+  constructor(props: any) {
+    super(props);
+  }
+
+  render() {
+    return (
+      <Switch>
+        <Route exact path='/' component={Greeting} />
+        <Route path='/message' component={Message} />
+        <Route path='/sent' component={MessageSent} />
+        <Route path='/messages' component={Messages} />
+      </Switch>
+    );
+  }
+
 }
 
 export default App;
